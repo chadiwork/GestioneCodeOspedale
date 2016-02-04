@@ -40,6 +40,8 @@ public class Coda <T> {
 
     }//Aggiunto generics (T info)
 
+
+
     public void enQueue(T info){
         //è un append alla fine della coda
         nodo n=new nodo();
