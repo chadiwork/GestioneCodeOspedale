@@ -17,7 +17,7 @@ public class WaitingRoom<Paziente> extends Coda {
 
     }
 
-    //aggiungo il paziente aggiornando i date della sala
+    //aggiungo il paziente aggiornando i dati della sala
     public void addPaziente(Paziente patient){
         this.numPazientiCorrente++;
         this.enQueue(patient);
@@ -35,4 +35,17 @@ public class WaitingRoom<Paziente> extends Coda {
             return false;
         }
     }
+
+    public String getNumeroTicket() {
+        //restituisce una stringa con un codice unico che sembra quello delle macchine per numeri
+        String uno,due;
+        uno=new RandomString(2).nextString();
+        due=""+uno;
+        due.toUpperCase();
+        due=due+"-"+numeroPazientiVisitati;
+    }
+
+
+
+
 }

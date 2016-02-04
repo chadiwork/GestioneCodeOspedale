@@ -99,13 +99,19 @@ public class Finestra extends JFrame {
                 //eccezioni gestite
                 if (comboCodice.getSelectedIndex() != 0) {
 
+                    int codicePaz=comboCodice.getSelectedIndex();
+
                     if (!inputNome.getText().equals("")) {
 
-                        if (!inputEta.getText().equals("")) {
+                        String nome=inputNome.getText();
 
+                        if (!inputEta.getText().equals("")) {
                             if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
+                                String età=inputEta.getText();
+
                                 System.out.println("FUNZIONA");
+                                //qui ho tutti i dati del form
 
                             } else {
                                 lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
