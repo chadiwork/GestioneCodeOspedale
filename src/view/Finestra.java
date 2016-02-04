@@ -74,7 +74,44 @@ public class Finestra extends JFrame {
         comboCodice.addItem(contenutiTendina[i]);
         }
 
-        comboCodice.setSelectedIndex();
+        comboCodice.setSelectedIndex(0);
+        btnMettiInSala.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //controllo l'estetica
+                lblUltimoInserito.setText("");
+
+                //if di controllo, vedo se l'utente immette info sensate e complete
+                //eccezioni gestite
+                if (comboCodice.getSelectedIndex() != 0) {
+
+                    if (!inputNome.getText().equals("")) {
+
+                        if (!inputEta.getText().equals("")) {
+
+                            if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
+
+                                System.out.println("FUNZIONA");
+
+                            } else {
+                                lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
+                            }
+                        } else {
+                            lblUltimoInserito.setText("Età non inserita");
+                        }
+                    } else {
+                        lblUltimoInserito.setText("Nome non inserito");
+                    }
+                } else {
+                    lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
+
+                }
+
+
+
+            }
+        });
     }
 
     public static void main(String[] args) throws Exception {
