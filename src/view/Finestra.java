@@ -62,6 +62,7 @@ public class Finestra extends JFrame {
     }
 
     public Finestra() {
+        contenutiTendina=new String[5];
 
         contenutiTendina[0]="Bianco";
         contenutiTendina[1]="Verde";
@@ -69,9 +70,11 @@ public class Finestra extends JFrame {
         contenutiTendina[3]="Rosso";
         contenutiTendina[4]="Scegliere il codice";
 
-        for (int i =0;i<4;i++){
-            comboCodice.add(contenutiTendina[i]);
+        for (int i =4;i>=0;i--){
+        comboCodice.addItem(contenutiTendina[i]);
         }
+
+        comboCodice.setSelectedIndex();
     }
 
     public static void main(String[] args) throws Exception {
