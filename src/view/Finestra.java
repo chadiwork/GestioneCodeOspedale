@@ -113,6 +113,7 @@ public class Finestra extends JFrame {
                                 System.out.println("FUNZIONA");
                                 //qui ho tutti i dati del form
 
+
                             } else {
                                 lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
                             }
