@@ -63,10 +63,11 @@ public class Finestra extends JFrame {
 
     public Finestra() {
 
-        contenutiTendina[0]="Verde";
-        contenutiTendina[1]="Giallo";
-        contenutiTendina[2]="Rosso";
-        contenutiTendina[3]="Scegliere il codice";
+        contenutiTendina[0]="Bianco";
+        contenutiTendina[1]="Verde";
+        contenutiTendina[2]="Giallo";
+        contenutiTendina[3]="Rosso";
+        contenutiTendina[4]="Scegliere il codice";
 
         for (int i =0;i<4;i++){
             comboCodice.add(contenutiTendina[i]);
