@@ -15,28 +15,27 @@ public class Finestra extends JFrame {
     //componenti GUI
     private JPanel rootPanel;
     private JTextField inputField;
-    private JPanel pnlStoriaViaggi;
-    private JButton btnCaricaAuto;
+    private JPanel pnlStoria2;
+    private JButton btnMettiInSala;
     private JLabel lblViaggi;
     private JPanel pnlCenter;
     private JPanel pnlDX;
     private JTextArea txtAreaUscita;
-    private JPanel pnlTarga;
-    private JTextField inputFieldTarga;
-    private JTextField inputFieldLunghezza;
+    private JPanel pnlEta;
+    private JTextField inputEta;
+    private JTextField inputNome;
     private JPanel pnlNomeCliente;
-    private JPanel pnlRiempimentoTraghetto;
-    private JPanel pnlStoriaInserimenti;
+    private JPanel pnlForm;
+    private JPanel pnlStoria1;
     private JLabel lblUltimoInserito;
     private JButton btnEsciAuto;
     private JTextArea txtAreaInseriti;
     private JPanel pnlTasti;
-    private JProgressBar progressCapienzaTraghetto;
-    private JButton btnAutoCasuale;
-    private JPanel pnlSemaforo;
+    private JButton btnPazienteCasuale;
     private JPanel panelLabel;
-    private JLabel lblNumeroGrandezza;
-    private JLabel lblNumeroSoglia;
+    private JLabel lblCapienzaSala;
+    private JLabel lblNumeroInAttesa;
+    private JComboBox comboCodice;
     private JLabel lblEseguite;
 
     //variabili progettuali
@@ -67,8 +66,6 @@ public class Finestra extends JFrame {
         Finestra f = new Finestra("Gestione Code Ospedale", 750, 450);
     }
 
-
-
     public void setPosizioneCentro() {
         // valuta le dimensioni della finestra
         int larg;
@@ -82,4 +79,5 @@ public class Finestra extends JFrame {
         final int y = dimensione.height / 2 - alt / 2;
         this.setLocation(x, y);
     }
+    
 }
