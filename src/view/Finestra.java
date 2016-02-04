@@ -1,13 +1,13 @@
 package view;
 
 import resources.Paziente;
+import resources.WaitingRoom;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 /**
  * Creato da Vlady il 15/01/2016.
@@ -45,6 +45,7 @@ public class Finestra extends JFrame {
 
     String[] contenutiTendina;
 
+    WaitingRoom<Paziente> stanza=new WaitingRoom<>();
 
     //colori
     private Color coloreSuccesso = new Color(0, 132, 0);
@@ -83,7 +84,7 @@ public class Finestra extends JFrame {
 
 
 
-
+        System.out.println(stanza.getRandTicket());
 
 
 
@@ -132,6 +133,25 @@ public class Finestra extends JFrame {
 
             }
         });
+
+
+
+        btnPazienteCasuale.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //nome da fare meglio
+                inputNome.setText("Paolo");
+
+                //creo età random
+                Random r = new Random();
+                int Low = 3;
+                int High = 80;
+                int Result = r.nextInt(High-Low) + Low;
+
+                inputEta.setText(""+Result);
+
+            }
+        });
     }
 
     public static void main(String[] args) throws Exception {
@@ -151,6 +171,11 @@ public class Finestra extends JFrame {
         final int x = dimensione.width / 2 - larg / 2;
         final int y = dimensione.height / 2 - alt / 2;
         this.setLocation(x, y);
+    }
+
+    public static boolean betweenExclusive(int x, int min, int max)
+    {
+        return x>min && x<max;
     }
     
 }

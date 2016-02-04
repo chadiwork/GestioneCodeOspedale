@@ -5,25 +5,26 @@ package resources;
  */
 public class Paziente {
 
-    String nome,cognome,descrizioneProblema;
-    int codiceEmergenza;
+    String nome,cognome,descrizioneProblema,ticket;
+    int colore;
     int età;
     /*
     Bianco=0    Verde=1     Giallo=2    Rosso=3
      */
 
+
     //costruttore sintetico che useremo
-    public Paziente(String nome, int codiceEmergenza, int età) {
+    public Paziente(String nome, int colore, int età,String ticket) {
         this.nome = nome;
-        this.codiceEmergenza = codiceEmergenza;
+        this.colore = colore;
         this.età = età;
     }
-    //costruttore completo che MAI useremo
-    public Paziente(String nome, String cognome, String descrizioneProblema, int codiceEmergenza, int età) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.descrizioneProblema = descrizioneProblema;
-        this.codiceEmergenza = codiceEmergenza;
-        this.età = età;
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
     }
 }

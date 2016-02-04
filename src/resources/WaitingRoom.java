@@ -7,7 +7,7 @@ import adt.Coda;
  * in origine parte del progetto:
  * GestioneCodeOspedale
  */
-public class WaitingRoom<Paziente> extends Coda {
+public class WaitingRoom<T> extends Coda {
 
     //dati della stanza
     int numPazientiCorrente=0;
@@ -18,9 +18,13 @@ public class WaitingRoom<Paziente> extends Coda {
     }
 
     //aggiungo il paziente aggiornando i dati della sala
-    public void addPaziente(Paziente patient){
+    public void addPaziente(String nome,int colore,int età){
         this.numPazientiCorrente++;
-        this.enQueue(patient);
+
+        //creo un nuovo paziente qui dato che mi servono i dati della stanza
+        Paziente toAdd=new Paziente( nome, colore, età,getRandTicket());
+
+        this.enQueue(toAdd);
     }
 
     public boolean visitaProxPazInCoda(){
@@ -36,16 +40,13 @@ public class WaitingRoom<Paziente> extends Coda {
         }
     }
 
-    public String getNumeroTicket() {
+    public String getRandTicket() {
         //restituisce una stringa con un codice unico che sembra quello delle macchine per numeri
         String uno,due;
         uno=new RandomString(2).nextString();
         due=""+uno;
+
         due.toUpperCase();
         return due=due+"-"+numeroPazientiVisitati;
     }
-
-
-
-
 }
