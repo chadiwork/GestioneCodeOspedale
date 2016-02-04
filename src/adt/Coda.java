@@ -10,7 +10,7 @@ package adt;
  * Esempio semplificato di coda, realizzata come lista semplice
  * formata da nodi legati tra loro da un riferimento
  * Il nodo ha una struttura fissa e contiene solo una stringa
- * @author Cenacchi
+ * @author Cenacchi + Chadi && Vlady
  */
 public class Coda <T> {
 
@@ -39,8 +39,6 @@ public class Coda <T> {
         fronte=fronte.getNext();
 
     }//Aggiunto generics (T info)
-
-
 
     public void enQueue(T info){
         //è un append alla fine della coda

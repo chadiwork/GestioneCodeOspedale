@@ -34,26 +34,16 @@ public class Finestra extends JFrame {
     private JProgressBar progressCapienzaTraghetto;
     private JButton btnAutoCasuale;
     private JPanel pnlSemaforo;
-    private JLabel lblGrandezzaTraghetto;
-    private JLabel lblSogliaViaggio;
     private JPanel panelLabel;
     private JLabel lblNumeroGrandezza;
     private JLabel lblNumeroSoglia;
     private JLabel lblEseguite;
 
+    //variabili progettuali
 
-
-    //inizio variabili d'appoggio
-    //private String semaforo; //può essere solo R,Y,G (red,yellow,green), l'ho usato per avere più possibilità rispetto al
-    // booleano
-    private int dimensioneTraghetto = 100;//tarata per essere 100 ma modificabile
-    private int caratteriDiTarga = 7;//tarata per 7 ma modificabile
-    private int sogliaViaggioMinimo = 75;//tarata per 75 ma modificabile
-    private boolean arrADest = false;
-
+    //colori
     private Color coloreSuccesso = new Color(0, 132, 0);
     private Color coloreMain = new Color(0, 146, 255);
-
 
     public Finestra(String title, int larghezza, int altezza) {
         //setup iniziale finestra
@@ -74,7 +64,7 @@ public class Finestra extends JFrame {
 
     public static void main(String[] args) throws Exception {
         //main
-        Finestra f = new Finestra("Caronte 1.1 | By Hopeless13", 750, 450);
+        Finestra f = new Finestra("Gestione Code Ospedale", 750, 450);
     }
 
 

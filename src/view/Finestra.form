@@ -141,7 +141,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="99f7" class="javax.swing.JLabel" binding="lblGrandezzaTraghetto">
+                  <component id="99f7" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -149,7 +149,7 @@
                       <text value="Capienza traghetto:"/>
                     </properties>
                   </component>
-                  <component id="d9fe1" class="javax.swing.JLabel" binding="lblSogliaViaggio">
+                  <component id="d9fe1" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
