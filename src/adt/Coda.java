@@ -12,7 +12,7 @@ package adt;
  * Il nodo ha una struttura fissa e contiene solo una stringa
  * @author Cenacchi
  */
-public class Coda {
+public class Coda <T> {
     private nodo fronte,ultimo;
     public Coda(){
         fronte=null;
@@ -34,7 +34,8 @@ public class Coda {
         if (this.isEmpty()) throw new Exception ("impossibile effettuare dequeue perchè la coda è vuota");
         fronte=fronte.getNext();
     }
-    public void enQueue(String info){
+    //Aggiunto generics (T info)
+    public void enQueue(T info){
         //è un append alla fine della coda
         nodo n=new nodo();
         n.setInfo(info);

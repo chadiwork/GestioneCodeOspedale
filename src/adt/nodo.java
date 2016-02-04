@@ -7,11 +7,11 @@ package adt;
  * non sarebbe indispensabili
  * @author peroni
  */
-public class nodo implements Comparable{
+public class nodo<T>{
     /**
      * Rappresenta una versione semplificate dell'elemento contenuto nella lista
      */
-    private String info;
+    private T info;
     /**
      * Riferimento all'elemento successivo
      */
@@ -21,7 +21,7 @@ public class nodo implements Comparable{
      * puntatore all'elemento successivo
      */
     public nodo(){
-        info="";
+        info=null;
         next=null;
     }
     /**
@@ -30,7 +30,7 @@ public class nodo implements Comparable{
      * @param info Rappresentazione semplificata dell'informazione
      * @param next riferimento all'elemento successivo (null per l'ultimo)
      */
-    public nodo(String info,nodo next){
+    public nodo(T info,nodo next){
         this.info=info;
         this.next=next;
     }
@@ -38,7 +38,7 @@ public class nodo implements Comparable{
      * Restituisce l'elemento di informazione contenuto nel nodo
      * @return informazione contenuta nel nodo
      */
-    public String getInfo(){
+    public T getInfo(){
         return info;
     }
     /**
@@ -52,7 +52,7 @@ public class nodo implements Comparable{
      * Modifica l'informazione in base al parametro di ingresso
      * @param info informazione da inserire nel nodo
      */
-    public void setInfo(String info){
+    public void setInfo(T info){
         this.info=info;
     }
     /**
@@ -67,10 +67,10 @@ public class nodo implements Comparable{
      * testuale del nodo
      * @return rappresentazione testuale del nodo
      */
-    @Override
-    public String toString(){
-        return info;
-    }
+   // @Override
+   // public String toString(){
+    //    return info;
+    //}
     /**
      * Implementa il metodo compareTo dell'interfaccia Comparable
      * confronta due nodi secondo un criterio specifico relativo
@@ -81,10 +81,10 @@ public class nodo implements Comparable{
      * @return 1 se questo oggetto è maggiore dell'oggetto da confrontare
      * 0 se sono uguali, -1 se l'oggetto è minore
      */
-    public int compareTo(Object o) {
+   /** public int compareTo(Object o) {
         int ris=0;
         nodo n=(nodo) o;
         ris=this.getInfo().compareTo(n.getInfo());
         return ris;
-    }
+    }*/
 }
