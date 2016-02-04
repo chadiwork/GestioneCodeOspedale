@@ -43,7 +43,7 @@ public class Finestra extends JFrame {
 
     //variabili progettuali
 
-    String[] contenutiTendina;
+    String[] tabellaCodici;
 
     WaitingRoom<Paziente> stanza=new WaitingRoom<>();
 
@@ -66,27 +66,21 @@ public class Finestra extends JFrame {
     public Finestra() {
         //array per ora non necesario per le core funcion del programma, solo per impostare l'inserimento della roba nella tendina
 
-        contenutiTendina=new String[5];
+        tabellaCodici =new String[5];
 
-        contenutiTendina[0]="Bianco";
-        contenutiTendina[1]="Verde";
-        contenutiTendina[2]="Giallo";
-        contenutiTendina[3]="Rosso";
-        contenutiTendina[4]="Scegliere il codice";
+        tabellaCodici[0]="Bianco";
+        tabellaCodici[1]="Verde";
+        tabellaCodici[2]="Giallo";
+        tabellaCodici[3]="Rosso";
+        tabellaCodici[4]="Scegliere il codice";
 
         //aggiungo roba alla tendina
-        for (int i =4;i>=0;i--){
-        comboCodice.addItem(contenutiTendina[i]);
+        for (int i =0;i<=4;i++){
+        comboCodice.addItem(tabellaCodici[i]);
         }
 
         //seleziono la prima voce (che gestirò come sbagliata dopo) come di default
-        comboCodice.setSelectedIndex(0);
-
-
-
-        System.out.println(stanza.getRandTicket());
-
-
+        comboCodice.setSelectedIndex(4);
 
 
         btnMettiInSala.addActionListener(new ActionListener() {
@@ -95,10 +89,13 @@ public class Finestra extends JFrame {
 
                 //controllo l'estetica
                 lblUltimoInserito.setText("");
+                if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
+                    txtAreaInseriti.setText("");
+                }
 
                 //if di controllo, vedo se l'utente immette info sensate e complete
                 //eccezioni gestite
-                if (comboCodice.getSelectedIndex() != 0) {
+                if (comboCodice.getSelectedIndex() != 4) {
 
                     int codicePaz=comboCodice.getSelectedIndex();
 
@@ -109,11 +106,21 @@ public class Finestra extends JFrame {
                         if (!inputEta.getText().equals("")) {
                             if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
-                                String età=inputEta.getText();
+                                int età=Integer.parseInt(inputEta.getText());
 
-                                System.out.println("FUNZIONA");
                                 //qui ho tutti i dati del form
 
+
+                                stanza.addPaziente(nome,codicePaz,età);
+                                //qui ho aggiunto il paziente
+
+                                txtAreaInseriti.append(nome+" aggiunto, codice paziente: "+tabellaCodici[codicePaz]+"\n");
+
+
+                                System.out.println(stanza.getFronte());
+
+
+                                System.out.println("FUNZIONA");
 
                             } else {
                                 lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
