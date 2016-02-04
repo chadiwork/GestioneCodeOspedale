@@ -42,7 +42,7 @@ public class WaitingRoom<Paziente> extends Coda {
         uno=new RandomString(2).nextString();
         due=""+uno;
         due.toUpperCase();
-        due=due+"-"+numeroPazientiVisitati;
+        return due=due+"-"+numeroPazientiVisitati;
     }
 
 
