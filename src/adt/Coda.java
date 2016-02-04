@@ -22,7 +22,6 @@ public class Coda {
     }
 
 
-
     public nodo getFronte() {
         return fronte;
     }
