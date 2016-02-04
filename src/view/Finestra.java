@@ -1,9 +1,12 @@
 package view;
 
+import resources.Paziente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -40,6 +43,8 @@ public class Finestra extends JFrame {
 
     //variabili progettuali
 
+    String[] contenutiTendina;
+
     //colori
     private Color coloreSuccesso = new Color(0, 132, 0);
     private Color coloreMain = new Color(0, 146, 255);
@@ -58,7 +63,14 @@ public class Finestra extends JFrame {
 
     public Finestra() {
 
+        contenutiTendina[0]="Verde";
+        contenutiTendina[1]="Giallo";
+        contenutiTendina[2]="Rosso";
+        contenutiTendina[3]="Scegliere il codice";
 
+        for (int i =0;i<4;i++){
+            comboCodice.add(contenutiTendina[i]);
+        }
     }
 
     public static void main(String[] args) throws Exception {
