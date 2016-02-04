@@ -45,6 +45,7 @@ public class Finestra extends JFrame {
 
     String[] contenutiTendina;
 
+
     //colori
     private Color coloreSuccesso = new Color(0, 132, 0);
     private Color coloreMain = new Color(0, 146, 255);
@@ -62,6 +63,8 @@ public class Finestra extends JFrame {
     }
 
     public Finestra() {
+        //array per ora non necesario per le core funcion del programma, solo per impostare l'inserimento della roba nella tendina
+
         contenutiTendina=new String[5];
 
         contenutiTendina[0]="Bianco";
@@ -70,11 +73,21 @@ public class Finestra extends JFrame {
         contenutiTendina[3]="Rosso";
         contenutiTendina[4]="Scegliere il codice";
 
+        //aggiungo roba alla tendina
         for (int i =4;i>=0;i--){
         comboCodice.addItem(contenutiTendina[i]);
         }
 
+        //seleziono la prima voce (che gestirò come sbagliata dopo) come di default
         comboCodice.setSelectedIndex(0);
+
+
+
+
+
+
+
+
         btnMettiInSala.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
