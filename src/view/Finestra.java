@@ -47,6 +47,7 @@ public class Finestra extends JFrame {
 
 
 
+
     //inizio variabili d'appoggio
     //private String semaforo; //può essere solo R,Y,G (red,yellow,green), l'ho usato per avere più possibilità rispetto al
     // booleano
