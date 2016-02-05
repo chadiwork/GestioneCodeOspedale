@@ -27,7 +27,6 @@ public class Coda <T> {
     public nodo getFronte() {
         return fronte;
     }
-
     public nodo getUltimo() {
         return ultimo;
     }

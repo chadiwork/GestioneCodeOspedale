@@ -58,7 +58,8 @@ public class Finestra extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.setSize(larghezza, altezza);
-        this.setPosizioneCentro();
+        this.setLocationRelativeTo(null);
+        //this.setPosizioneCentro();
         this.setVisible(true);
         this.setResizable(false);
     }
@@ -100,48 +101,50 @@ public class Finestra extends JFrame {
                     int codicePaz=comboCodice.getSelectedIndex();
 
                     if (!inputNome.getText().equals("")) {
-
-                        String nome=inputNome.getText();
-
-                        if (!inputEta.getText().equals("")) {
-                            if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
-
-                                int età=Integer.parseInt(inputEta.getText());
-
-                                //qui ho tutti i dati del form
+                        //aggiungere
+                       // if (inputEta.getText().matches("")) {
 
 
-                                stanza.addPaziente(nome,codicePaz,età);
-                                //qui ho aggiunto il paziente
+                            String nome = inputNome.getText();
 
-                                txtAreaInseriti.append(nome+" aggiunto, codice paziente: "+tabellaCodici[codicePaz]+"\n");
+                            if (!inputEta.getText().equals("")) {
+                                if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
+
+                                    int età = Integer.parseInt(inputEta.getText());
+
+                                    //qui ho tutti i dati del form
 
 
-                                System.out.println(stanza.getFronte());
+                                    stanza.addPaziente(nome, codicePaz, età);
+                                    //qui ho aggiunto il paziente
+
+                                    txtAreaInseriti.append(nome + " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
 
 
-                                System.out.println("FUNZIONA");
+                                    System.out.println(stanza.getFronte());
 
-                            } else {
-                                lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
-                            }
+
+                                    System.out.println("FUNZIONA");
+
+                                } else {
+                                    lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
+                                }
+                            /*} else {
+                                lblUltimoInserito.setText("Età non inserita");
+                            }*/
                         } else {
-                            lblUltimoInserito.setText("Età non inserita");
+                            lblUltimoInserito.setText("Nome non inserito");
                         }
                     } else {
-                        lblUltimoInserito.setText("Nome non inserito");
+                        lblUltimoInserito.setText("Inserire solo lettere nel nome");
                     }
                 } else {
                     lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
 
                 }
 
-
-
             }
         });
-
-
 
         btnPazienteCasuale.addActionListener(new ActionListener() {
             @Override
@@ -166,7 +169,7 @@ public class Finestra extends JFrame {
         Finestra f = new Finestra("Gestione Code Ospedale", 750, 450);
     }
 
-    public void setPosizioneCentro() {
+    /*public void setPosizioneCentro() {
         // valuta le dimensioni della finestra
         int larg;
         int alt;
@@ -178,11 +181,5 @@ public class Finestra extends JFrame {
         final int x = dimensione.width / 2 - larg / 2;
         final int y = dimensione.height / 2 - alt / 2;
         this.setLocation(x, y);
-    }
-
-    public static boolean betweenExclusive(int x, int min, int max)
-    {
-        return x>min && x<max;
-    }
-    
+    }*/
 }

@@ -9,7 +9,10 @@ public class Paziente {
     int colore;
     int età;
     /*
-    Bianco=0    Verde=1     Giallo=2    Rosso=3
+    Bianco=0
+    Verde=1
+    Giallo=2
+    Rosso=3
      */
 
 
