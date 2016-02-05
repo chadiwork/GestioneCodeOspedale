@@ -9,21 +9,21 @@ import adt.Coda;
  */
 public class WaitingRoom {
 
-    Coda codRosso;
-    Coda codGiallo;
-    Coda codVerde;
-    Coda codBianco;
+    Coda <Paziente> codRosso=new Coda<>();
+    Coda <Paziente>codGiallo=new Coda<>();
+    Coda <Paziente>codVerde=new Coda<>();
+    Coda <Paziente>codBianco=new Coda<>();
 
     //dati della stanza
     int numPazientiCorrente=0;
     int numeroPazientiVisitati=0;
 
     public WaitingRoom() {
-        //code inizializzate
-        codRosso <Paziente>=new Coda<>();
-        codGiallo=new Coda();
-        codVerde=new Coda();
-        codBianco=new Coda();
+//        //code inizializzate
+//        codRosso =new Coda();
+//        codGiallo=new Coda();
+//        codVerde=new Coda();
+//        codBianco=new Coda();
     }
 
     //aggiungo il paziente aggiornando i dati della sala
@@ -50,16 +50,32 @@ public class WaitingRoom {
         }
     }
 
-    public boolean visitaProxPazInCoda(){
+    public Paziente visitaProxPazInCoda() throws Exception {
 
         if (!codRosso.isEmpty()) {
-            Paziente inUscita;
-            inUscita=codRosso.getFronte()
-        } else if () {
-        } else if () {
-        } else if () {
+//            Paziente inUscita;
+            Paziente inUscita=(Paziente)codRosso.getFronte().getInfo();
+            //lancio eccezione a livello di metodo, il deQueue sotto deve funzionare per forza perchè sono in un if di !vuoto
+            codRosso.deQueue();
+            return inUscita;
+        } else if (!codGiallo.isEmpty()) {
+            Paziente inUscita=(Paziente)codGiallo.getFronte().getInfo();
+            //lancio eccezione a livello di metodo, il deQueue sotto deve funzionare per forza perchè sono in un if di !vuoto
+            codGiallo.deQueue();
+            return inUscita;
+        } else if (!codVerde.isEmpty()) {
+            Paziente inUscita=(Paziente)codVerde.getFronte().getInfo();
+            //lancio eccezione a livello di metodo, il deQueue sotto deve funzionare per forza perchè sono in un if di !vuoto
+            codVerde.deQueue();
+            return inUscita;
+        } else if (!codBianco.isEmpty()) {
+            Paziente inUscita = (Paziente) codBianco.getFronte().getInfo();
+            //lancio eccezione a livello di metodo, il deQueue sotto deve funzionare per forza perchè sono in un if di !vuoto
+            codBianco.deQueue();
+            return inUscita;
+        } else {
+            return null;
         }
-
     }
 
     public String getRandTicket() {

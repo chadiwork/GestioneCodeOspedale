@@ -45,7 +45,7 @@ public class Finestra extends JFrame {
 
     String[] tabellaCodici;
 
-    WaitingRoom<Paziente> stanza=new WaitingRoom<>();
+    WaitingRoom stanza=new WaitingRoom();
 
     //colori
     private Color coloreSuccesso = new Color(0, 132, 0);
@@ -120,9 +120,13 @@ public class Finestra extends JFrame {
 
                                     txtAreaInseriti.append(nome + " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
 
-
-                                    System.out.println(stanza.getFronte());
-
+                                    try {
+                                        Paziente tmp;
+                                        tmp=stanza.visitaProxPazInCoda();
+                                        System.out.println(tmp.getEtà());
+                                    } catch (Exception e1) {
+                                        e1.printStackTrace();
+                                    }
 
                                     System.out.println("FUNZIONA");
 

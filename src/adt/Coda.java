@@ -37,8 +37,8 @@ public class Coda <T> {
         if (this.isEmpty()) throw new Exception ("Impossibile effettuare dequeue perchè la coda è vuota");
         fronte=fronte.getNext();
 
-    }//Aggiunto generics (T info)
-
+    }
+    //Aggiunto generics (T info)
     public void enQueue(T info){
         //è un append alla fine della coda
         nodo n=new nodo();

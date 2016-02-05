@@ -30,4 +30,28 @@ public class Paziente {
     public void setTicket(String ticket) {
         this.ticket = ticket;
     }
+
+    public int getEtà() {
+        return età;
+    }
+
+    public void setEtà(int età) {
+        this.età = età;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getColore() {
+        return colore;
+    }
+
+    public void setColore(int colore) {
+        this.colore = colore;
+    }
 }
