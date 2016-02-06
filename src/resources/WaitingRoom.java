@@ -27,11 +27,11 @@ public class WaitingRoom {
     }
 
     //aggiungo il paziente aggiornando i dati della sala
-    public void addPaziente(String nome,int colore,int età){
+    public void addPaziente(String nome,String cognome,int colore,int età){
         this.numPazientiCorrente++;
 
         //creo un nuovo paziente qui dato che mi servono i dati della stanza
-        Paziente toAdd=new Paziente( nome, colore, età,getRandTicket());
+        Paziente toAdd=new Paziente( nome,cognome, colore, età,getRandTicket());
 
         //aggiungo il paziente alla lista interessata
         switch (toAdd.colore) {

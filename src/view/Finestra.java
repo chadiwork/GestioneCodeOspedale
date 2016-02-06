@@ -39,6 +39,8 @@ public class Finestra extends JFrame {
     private JLabel lblCapienzaSala;
     private JLabel lblNumeroInAttesa;
     private JComboBox comboCodice;
+    private JPanel pnlCognomeCliente;
+    private JTextField inputCognome;
     private JLabel lblEseguite;
 
     //variabili progettuali
@@ -103,10 +105,9 @@ public class Finestra extends JFrame {
                     if (!inputNome.getText().equals("")) {
                         //aggiungere
                        // if (inputEta.getText().matches("")) {
-
-
                             String nome = inputNome.getText();
-
+                        if (!inputCognome.getText().equals("")){
+                            String cognome=inputCognome.getText();
                             if (!inputEta.getText().equals("")) {
                                 if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
@@ -115,10 +116,10 @@ public class Finestra extends JFrame {
                                     //qui ho tutti i dati del form
 
 
-                                    stanza.addPaziente(nome, codicePaz, età);
+                                    stanza.addPaziente(nome,cognome, codicePaz, età);
                                     //qui ho aggiunto il paziente
 
-                                    txtAreaInseriti.append(nome + " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
+                                    txtAreaInseriti.append(nome +" "+cognome+ " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
 
                                     try {
                                         Paziente tmp;
@@ -142,6 +143,7 @@ public class Finestra extends JFrame {
                     } else {
                         lblUltimoInserito.setText("Inserire solo lettere nel nome");
                     }
+                    }
                 } else {
                     lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
 
@@ -155,7 +157,7 @@ public class Finestra extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //nome da fare meglio
                 inputNome.setText("Paolo");
-
+                inputCognome.setText("Moretto");
                 //creo età random
                 Random r = new Random();
                 int Low = 3;

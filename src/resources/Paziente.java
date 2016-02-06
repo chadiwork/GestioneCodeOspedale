@@ -17,8 +17,9 @@ public class Paziente {
 
 
     //costruttore sintetico che useremo
-    public Paziente(String nome, int colore, int età,String ticket) {
+    public Paziente(String nome,String cognome, int colore, int età,String ticket) {
         this.nome = nome;
+        this.cognome = cognome;
         this.colore = colore;
         this.età = età;
     }
@@ -43,8 +44,16 @@ public class Paziente {
         return nome;
     }
 
+    public String getCognome() {
+        return cognome;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     public int getColore() {
