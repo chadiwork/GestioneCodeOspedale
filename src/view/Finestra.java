@@ -106,6 +106,9 @@ public class Finestra extends JFrame {
                         //aggiungere
                        // if (inputEta.getText().matches("")) {
                             String nome = inputNome.getText();
+                        /*
+                        Controllare i If-Else e Cognome -Chadi ha un dubbio
+                         */
                         if (!inputCognome.getText().equals("")){
                             String cognome=inputCognome.getText();
                             if (!inputEta.getText().equals("")) {
