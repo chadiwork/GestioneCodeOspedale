@@ -15,7 +15,6 @@ public class Paziente {
     Rosso=3
      */
 
-
     //costruttore sintetico che useremo
     public Paziente(String nome,String cognome, int colore, int età,String ticket) {
         this.nome = nome;

@@ -149,9 +149,7 @@ public class Finestra extends JFrame {
                     }
                 } else {
                     lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
-
                 }
-
             }
         });
 
