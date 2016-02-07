@@ -104,11 +104,11 @@ public class Finestra extends JFrame {
 
                     if (!inputNome.getText().equals("")) {
 
-                        if (inputNome.getText().matches("/^[a-zA-Z]*$/")) {
+                        if (inputNome.getText().matches("[a-zA-Z]+")) {
                             String nome = inputNome.getText();
 
                         if (!inputCognome.getText().equals("")){
-                            if(inputCognome.getText().matches("/^[a-zA-Z]*$/")){
+                            if(inputCognome.getText().matches("[a-zA-Z]+")){
 
                             String cognome=inputCognome.getText();
                             if (!inputEta.getText().equals("")) {
