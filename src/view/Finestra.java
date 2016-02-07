@@ -175,6 +175,8 @@ public class Finestra extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                int pazRossi=Integer.parseInt(lblCapienzaSala.getText());
+                int pazPlebei=Integer.parseInt(lblNumeroInAttesa.getText());
                 lblUltimoInserito.setText("");
                 if (txtAreaVisitati.getText().equals("Ancora nulla qui...")) {
                     txtAreaVisitati.setText("");
@@ -188,6 +190,11 @@ public class Finestra extends JFrame {
                         String cognome=tmp.getCognome();
                         int eta=tmp.getEtà();
                         txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
+                        if(tmp.getColore()==3){
+                            lblCapienzaSala.setText(Integer.toString(pazRossi-1));
+                        }else{
+                            lblNumeroInAttesa.setText(Integer.toString(pazPlebei-1));
+                        }
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
