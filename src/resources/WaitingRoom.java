@@ -87,4 +87,28 @@ public class WaitingRoom {
         due.toUpperCase();
         return due=due+"-"+numeroPazientiVisitati;
     }
+
+    public Coda<Paziente> getCodRosso() {
+        return codRosso;
+    }
+
+    public Coda<Paziente> getCodGiallo() {
+        return codGiallo;
+    }
+
+    public Coda<Paziente> getCodVerde() {
+        return codVerde;
+    }
+
+    public Coda<Paziente> getCodBianco() {
+        return codBianco;
+    }
+
+    public int getNumeroPazientiVisitati() {
+        return numeroPazientiVisitati;
+    }
+
+    public int getNumPazientiCorrente() {
+        return numPazientiCorrente;
+    }
 }

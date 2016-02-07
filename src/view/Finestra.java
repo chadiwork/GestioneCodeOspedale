@@ -42,7 +42,8 @@ public class Finestra extends JFrame {
     private JPanel pnlCognomeCliente;
     private JTextField inputCognome;
     private JLabel lblEseguite;
-
+    int pazRossi = 0;
+    int pazPlebei=0;
     //variabili progettuali
 
     String[] tabellaCodici;
@@ -85,7 +86,6 @@ public class Finestra extends JFrame {
         //seleziono la prima voce (che gestirò come sbagliata dopo) come di default
         comboCodice.setSelectedIndex(4);
 
-
         btnMettiInSala.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,6 +113,13 @@ public class Finestra extends JFrame {
                             if (!inputEta.getText().equals("")) {
                                 if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
+                                    if(codicePaz==3){
+                                        pazRossi=pazRossi+1;
+                                        lblCapienzaSala.setText(Integer.toString(pazRossi));
+                                    }else{
+                                        pazPlebei=pazPlebei+1;
+                                        lblNumeroInAttesa.setText(Integer.toString(pazPlebei));
+                                    }
                                     int età = Integer.parseInt(inputEta.getText());
 
                                     //qui ho tutti i dati del form
