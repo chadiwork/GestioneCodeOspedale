@@ -23,7 +23,7 @@ public class Finestra extends JFrame {
     private JLabel lblViaggi;
     private JPanel pnlCenter;
     private JPanel pnlDX;
-    private JTextArea txtAreaUscita;
+    private JTextArea txtAreaVisitati;
     private JPanel pnlEta;
     private JTextField inputEta;
     private JTextField inputNome;
@@ -31,7 +31,7 @@ public class Finestra extends JFrame {
     private JPanel pnlForm;
     private JPanel pnlStoria1;
     private JLabel lblUltimoInserito;
-    private JButton btnEsciAuto;
+    private JButton btnEsciPezzente;
     private JTextArea txtAreaInseriti;
     private JPanel pnlTasti;
     private JButton btnPazienteCasuale;
@@ -89,7 +89,6 @@ public class Finestra extends JFrame {
         btnMettiInSala.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 //controllo l'estetica
                 lblUltimoInserito.setText("");
                 if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
@@ -122,14 +121,6 @@ public class Finestra extends JFrame {
                                     //qui ho aggiunto il paziente
 
                                     txtAreaInseriti.append(nome +" "+cognome+ " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
-
-                                    try {
-                                        Paziente tmp;
-                                        tmp=stanza.visitaProxPazInCoda();
-                                        System.out.println(tmp.getEtà());
-                                    } catch (Exception e1) {
-                                        e1.printStackTrace();
-                                    }
 
                                     System.out.println("FUNZIONA");
 
@@ -171,6 +162,29 @@ public class Finestra extends JFrame {
 
                 inputEta.setText(""+Result);
 
+            }
+        });
+        btnEsciPezzente.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblUltimoInserito.setText("");
+                if (txtAreaVisitati.getText().equals("Ancora nulla qui...")) {
+                    txtAreaVisitati.setText("");
+                }
+                try {
+                    Paziente tmp=stanza.visitaProxPazInCoda();
+                    if (tmp==null){
+                        lblUltimoInserito.setText("Nessun paziente inserito");
+                    }else{
+                        String nome=tmp.getNome();
+                        String cognome=tmp.getCognome();
+                        int eta=tmp.getEtà();
+                        txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
