@@ -103,13 +103,13 @@ public class Finestra extends JFrame {
                     int codicePaz=comboCodice.getSelectedIndex();
 
                     if (!inputNome.getText().equals("")) {
-                        //aggiungere
-                       // if (inputEta.getText().matches("")) {
+
+                        if (inputNome.getText().matches("/^[a-zA-Z]*$/")) {
                             String nome = inputNome.getText();
-                        /*
-                        Controllare i If-Else e Cognome -Chadi ha un dubbio
-                         */
+
                         if (!inputCognome.getText().equals("")){
+                            if(inputCognome.getText().matches("/^[a-zA-Z]*$/")){
+
                             String cognome=inputCognome.getText();
                             if (!inputEta.getText().equals("")) {
                                 if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
@@ -117,7 +117,6 @@ public class Finestra extends JFrame {
                                     int età = Integer.parseInt(inputEta.getText());
 
                                     //qui ho tutti i dati del form
-
 
                                     stanza.addPaziente(nome,cognome, codicePaz, età);
                                     //qui ho aggiunto il paziente
@@ -137,15 +136,20 @@ public class Finestra extends JFrame {
                                 } else {
                                     lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
                                 }
-                            /*} else {
+                            } else {
                                 lblUltimoInserito.setText("Età non inserita");
-                            }*/
-                        } else {
-                            lblUltimoInserito.setText("Nome non inserito");
+                            }
+                        }else {
+                                lblUltimoInserito.setText("Inserire SOLO lettere nel cognome");
+                            }
+                        }else{
+                            lblUltimoInserito.setText("Cognome non inserito");
                         }
-                    } else {
-                        lblUltimoInserito.setText("Inserire solo lettere nel nome");
-                    }
+                    }else{
+                            lblUltimoInserito.setText("Inserire SOLO lettere nel nome");
+                        }
+                    }else {
+                        lblUltimoInserito.setText("Nome non inserito");
                     }
                 } else {
                     lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
@@ -175,18 +179,4 @@ public class Finestra extends JFrame {
         //main
         Finestra f = new Finestra("Gestione Code Ospedale", 750, 450);
     }
-
-    /*public void setPosizioneCentro() {
-        // valuta le dimensioni della finestra
-        int larg;
-        int alt;
-        alt = this.getHeight();
-        larg = this.getWidth();
-        // serve per la risoluzione dello schermo
-        final Toolkit kit = Toolkit.getDefaultToolkit();
-        final Dimension dimensione = kit.getScreenSize();
-        final int x = dimensione.width / 2 - larg / 2;
-        final int y = dimensione.height / 2 - alt / 2;
-        this.setLocation(x, y);
-    }*/
 }
