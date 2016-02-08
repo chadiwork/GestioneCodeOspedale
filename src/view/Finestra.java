@@ -85,122 +85,144 @@ public class Finestra extends JFrame {
 
         //seleziono la prima voce (che gestirò come sbagliata dopo) come di default
         comboCodice.setSelectedIndex(4);
+        btnEsciPezzente.setEnabled(false);
+        //Bottoni metti pazzienti
+        btnMettiInSala.addActionListener(e -> {
+            controlloErroriForm();
+        });
+        //Bottoni genera pazienti casuali
+        btnPazienteCasuale.addActionListener(e -> {
+            generaPazientiCasuali();
+        });
+        //Bottoni esci i pazienti
+        btnEsciPezzente.addActionListener(e -> {
+            estraiPazienti();
 
-        btnMettiInSala.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //controllo l'estetica
-                lblUltimoInserito.setText("");
-                if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
-                    txtAreaInseriti.setText("");
+        });
+    }
+    //metodi estesi
+    private void generaPazientiCasuali() {
+        //nome da fare meglio
+        inputNome.setText("Paolo");
+        inputCognome.setText("Moretto");
+        //creo età random
+        Random r = new Random();
+        int Low = 3;
+        int High = 80;
+        int Result = r.nextInt(High-Low) + Low;
+
+        inputEta.setText(""+Result);
+    }
+
+    private void estraiPazienti() {
+        lblUltimoInserito.setText("");
+        if (txtAreaVisitati.getText().equals("Ancora nulla qui...")) {
+            txtAreaVisitati.setText("");
+        }
+
+        try {
+            Paziente tmp=stanza.visitaProxPazInCoda();
+
+            if (tmp==null){
+                lblUltimoInserito.setText("Nessun paziente inserito");
+            }else{
+                //prendo i dati dalla coda
+                String nome=tmp.getNome();
+                String cognome=tmp.getCognome();
+                int eta=tmp.getEtà();
+                //stampo i dati
+                txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
+                //Contatore dei pazienti visitati
+                if(tmp.getColore()==3){
+                    int rossi=Integer.parseInt(lblCapienzaSala.getText());
+                    lblCapienzaSala.setText(Integer.toString(rossi-1));
+                }else{
+                    int plebei=Integer.parseInt(lblNumeroInAttesa.getText());
+                    lblNumeroInAttesa.setText(Integer.toString(plebei-1));
                 }
+                //controlllo se le code sono vuote
+                isEmpty();
 
-                //if di controllo, vedo se l'utente immette info sensate e complete
-                //eccezioni gestite
-                if (comboCodice.getSelectedIndex() != 4) {
+            }
 
-                    int codicePaz=comboCodice.getSelectedIndex();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
 
-                    if (!inputNome.getText().equals("")) {
+    private void controlloErroriForm() {
+        //controllo l'estetica
+        lblUltimoInserito.setText("");
+        if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
+            txtAreaInseriti.setText("");
+        }
 
-                        if (inputNome.getText().matches("[a-zA-Z]+")) {
-                            String nome = inputNome.getText();
+        //if di controllo, vedo se l'utente immette info sensate e complete
+        //eccezioni gestite
+        if (comboCodice.getSelectedIndex() != 4) {
 
-                        if (!inputCognome.getText().equals("")){
-                            if(inputCognome.getText().matches("[a-zA-Z]+")){
+            int codicePaz=comboCodice.getSelectedIndex();
 
-                            String cognome=inputCognome.getText();
-                            if (!inputEta.getText().equals("")) {
-                                if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
+            if (!inputNome.getText().equals("")) {
 
-                                    if(codicePaz==3){
-                                        pazRossi=pazRossi+1;
-                                        lblCapienzaSala.setText(Integer.toString(pazRossi));
-                                    }else{
-                                        pazPlebei=pazPlebei+1;
-                                        lblNumeroInAttesa.setText(Integer.toString(pazPlebei));
-                                    }
-                                    int età = Integer.parseInt(inputEta.getText());
+                if (inputNome.getText().matches("[a-zA-Z]+")) {
+                    String nome = inputNome.getText();
 
-                                    //qui ho tutti i dati del form
+                if (!inputCognome.getText().equals("")){
+                    if(inputCognome.getText().matches("[a-zA-Z]+")){
 
-                                    stanza.addPaziente(nome,cognome, codicePaz, età);
-                                    //qui ho aggiunto il paziente
+                    String cognome=inputCognome.getText();
+                    if (!inputEta.getText().equals("")) {
+                        if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
-                                    txtAreaInseriti.append(nome +" "+cognome+ " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
-
-                                    System.out.println("FUNZIONA");
-
-                                } else {
-                                    lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
-                                }
-                            } else {
-                                lblUltimoInserito.setText("Età non inserita");
+                            //Contatore pazienti visitati rossi e normali
+                            if(codicePaz==3){
+                                pazRossi=pazRossi+1;
+                                lblCapienzaSala.setText(Integer.toString(pazRossi));
+                            }else{
+                                pazPlebei=pazPlebei+1;
+                                lblNumeroInAttesa.setText(Integer.toString(pazPlebei));
                             }
-                        }else {
-                                lblUltimoInserito.setText("Inserire SOLO lettere nel cognome");
-                            }
-                        }else{
-                            lblUltimoInserito.setText("Cognome non inserito");
+
+                            int età = Integer.parseInt(inputEta.getText());
+                            //qui ho tutti i dati del form
+
+                            stanza.addPaziente(nome,cognome, codicePaz, età);
+                            //qui ho aggiunto il paziente
+                            txtAreaInseriti.append(nome +" "+cognome+ " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
+                            System.out.println("FUNZIONA");
+
+                            isEmpty();
+
+                        } else {
+                            lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
                         }
-                    }else{
-                            lblUltimoInserito.setText("Inserire SOLO lettere nel nome");
-                        }
-                    }else {
-                        lblUltimoInserito.setText("Nome non inserito");
+                    } else {
+                        lblUltimoInserito.setText("Età non inserita");
                     }
-                } else {
-                    lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
-                }
-            }
-        });
-
-        btnPazienteCasuale.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //nome da fare meglio
-                inputNome.setText("Paolo");
-                inputCognome.setText("Moretto");
-                //creo età random
-                Random r = new Random();
-                int Low = 3;
-                int High = 80;
-                int Result = r.nextInt(High-Low) + Low;
-
-                inputEta.setText(""+Result);
-
-            }
-        });
-        btnEsciPezzente.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int pazRossi=Integer.parseInt(lblCapienzaSala.getText());
-                int pazPlebei=Integer.parseInt(lblNumeroInAttesa.getText());
-                lblUltimoInserito.setText("");
-                if (txtAreaVisitati.getText().equals("Ancora nulla qui...")) {
-                    txtAreaVisitati.setText("");
-                }
-                try {
-                    Paziente tmp=stanza.visitaProxPazInCoda();
-                    if (tmp==null){
-                        lblUltimoInserito.setText("Nessun paziente inserito");
-                    }else{
-                        String nome=tmp.getNome();
-                        String cognome=tmp.getCognome();
-                        int eta=tmp.getEtà();
-                        txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
-                        if(tmp.getColore()==3){
-                            lblCapienzaSala.setText(Integer.toString(pazRossi-1));
-                        }else{
-                            lblNumeroInAttesa.setText(Integer.toString(pazPlebei-1));
-                        }
+                }else {
+                        lblUltimoInserito.setText("Inserire SOLO lettere nel cognome");
                     }
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                }else{
+                    lblUltimoInserito.setText("Cognome non inserito");
                 }
+            }else{
+                    lblUltimoInserito.setText("Inserire SOLO lettere nel nome");
+                }
+            }else {
+                lblUltimoInserito.setText("Nome non inserito");
             }
-        });
+        } else {
+            lblUltimoInserito.setText("Non hai selezionato la priorità del paziente");
+        }
+    }
+
+    private void isEmpty() {
+        if(stanza.codeEmpty()==false){
+            btnEsciPezzente.setEnabled(true);
+        }else{
+            btnEsciPezzente.setEnabled(false);
+        }
     }
 
     public static void main(String[] args) throws Exception {

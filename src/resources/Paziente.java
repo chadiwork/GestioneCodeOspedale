@@ -8,6 +8,7 @@ public class Paziente {
     String nome,cognome,descrizioneProblema,ticket;
     int colore;
     int età;
+
     /*
     Bianco=0
     Verde=1
@@ -23,20 +24,8 @@ public class Paziente {
         this.età = età;
     }
 
-    public String getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
     public int getEtà() {
         return età;
-    }
-
-    public void setEtà(int età) {
-        this.età = età;
     }
 
     public String getNome() {
@@ -47,19 +36,7 @@ public class Paziente {
         return cognome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
     public int getColore() {
         return colore;
-    }
-
-    public void setColore(int colore) {
-        this.colore = colore;
     }
 }

@@ -88,27 +88,13 @@ public class WaitingRoom {
         return due=due+"-"+numeroPazientiVisitati;
     }
 
-    public Coda<Paziente> getCodRosso() {
-        return codRosso;
-    }
-
-    public Coda<Paziente> getCodGiallo() {
-        return codGiallo;
-    }
-
-    public Coda<Paziente> getCodVerde() {
-        return codVerde;
-    }
-
-    public Coda<Paziente> getCodBianco() {
-        return codBianco;
-    }
-
-    public int getNumeroPazientiVisitati() {
-        return numeroPazientiVisitati;
-    }
-
-    public int getNumPazientiCorrente() {
-        return numPazientiCorrente;
+    //controllo se tutte le code sono vuote
+    public boolean codeEmpty(){
+        if(codBianco.isEmpty()==true && codVerde.isEmpty()==true && codGiallo.isEmpty()==true && codRosso.isEmpty()==true){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
