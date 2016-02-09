@@ -143,16 +143,7 @@ public class Finestra extends JFrame {
                 //stampo i dati
                 txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
 
-                //Contatore dei pazienti visitati
-                if(tmp.getColore()==3){
-                    int rossi=stanza.
-                            ;
-                    lblContaRossi.setText(Integer.toString(rossi-1));
-                }else{
-                    int plebei=Integer.parseInt(lblPazientiNonRossi.getText());
-                    lblPazientiNonRossi.setText(Integer.toString(plebei-1));
-
-                }
+                aggiornaLabelContatori();
                 //controlllo se le code sono vuote
                 isEmpty();
 
@@ -161,6 +152,14 @@ public class Finestra extends JFrame {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+    //TODO CODA DA CONTROLLARE
+
+    private void aggiornaLabelContatori() {
+
+        lblContaRossi.setText(String.valueOf(stanza.getNumeroPazientiRossi()));
+
+        lblPazientiNonRossi.setText(String.valueOf(stanza.getNumeroPazientiNonRossi()));
     }
 
     private void inserimentiForm() {

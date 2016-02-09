@@ -97,18 +97,18 @@ public class WaitingRoom {
     }
 
     public int getNumeroPazientiRossi() {
-        return codRosso.;//TODO prendi dimensione dalla coda
+        return codRosso.getDimension();//TODO controlla se funge bene
     }
 
-    public void setNumeroPazientiRossi(int numeroPazientiRossi) {
-        this.numeroPazientiRossi = numeroPazientiRossi;
-    }
 
     public int getNumeroPazientiTotali() {
-        return numeroPazientiTotali;//TODO prendi dimensione dalla coda
+        return codRosso.getDimension()+codVerde.getDimension()
+                +codGiallo.getDimension()+codBianco.getDimension();
+        //TODO controlla se funge bene
+    }
+    public int getNumeroPazientiNonRossi() {
+        return codVerde.getDimension()+codGiallo.getDimension()+codBianco.getDimension();
+        //TODO controlla se funge bene
     }
 
-    public void setNumeroPazientiTotali(int numeroPazientiTotali) {
-        this.numeroPazientiTotali = numeroPazientiTotali;
-    }
 }

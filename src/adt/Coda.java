@@ -67,4 +67,8 @@ public class Coda <T> {
             ultimo=n;
         }
     }
+
+    public int getDimension() {
+        return dimension;
+    }
 }
