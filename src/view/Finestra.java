@@ -5,9 +5,9 @@ import resources.WaitingRoom;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
+
+
 
 /**
  * Creato da Vlady il 15/01/2016.
@@ -36,8 +36,8 @@ public class Finestra extends JFrame {
     private JPanel pnlTasti;
     private JButton btnPazienteCasuale;
     private JPanel panelLabel;
-    private JLabel lblCapienzaSala;
-    private JLabel lblNumeroInAttesa;
+    private JLabel lblContaRossi;
+    private JLabel lblPazientiNonRossi;
     private JComboBox comboCodice;
     private JPanel pnlCognomeCliente;
     private JTextField inputCognome;
@@ -78,28 +78,36 @@ public class Finestra extends JFrame {
         tabellaCodici[3]="Rosso";
         tabellaCodici[4]="Scegliere il codice";
 
-        //aggiungo roba alla tendina
-        for (int i =0;i<=4;i++){
-        comboCodice.addItem(tabellaCodici[i]);
-        }
+        riempiTendina();
 
         //seleziono la prima voce (che gestirò come sbagliata dopo) come di default
         comboCodice.setSelectedIndex(4);
         btnEsciPezzente.setEnabled(false);
+
         //Bottoni metti pazzienti
         btnMettiInSala.addActionListener(e -> {
-            controlloErroriForm();
+            inserimentiForm();
         });
+
         //Bottoni genera pazienti casuali
         btnPazienteCasuale.addActionListener(e -> {
             generaPazientiCasuali();
         });
+
         //Bottoni esci i pazienti
         btnEsciPezzente.addActionListener(e -> {
             estraiPazienti();
-
         });
+
     }
+
+    private void riempiTendina() {
+        //aggiungo roba alla tendina
+        for (int i =0;i<=4;i++){
+        comboCodice.addItem(tabellaCodici[i]);
+        }
+    }
+
     //metodi estesi
     private void generaPazientiCasuali() {
         //nome da fare meglio
@@ -115,9 +123,11 @@ public class Finestra extends JFrame {
     }
 
     private void estraiPazienti() {
-        lblUltimoInserito.setText("");
+        //controllo estetico
+
         if (txtAreaVisitati.getText().equals("Ancora nulla qui...")) {
             txtAreaVisitati.setText("");
+            lblUltimoInserito.setText("");
         }
 
         try {
@@ -132,13 +142,16 @@ public class Finestra extends JFrame {
                 int eta=tmp.getEtà();
                 //stampo i dati
                 txtAreaVisitati.append(nome+" "+cognome+" "+eta+" "+" VISITATO"+"\n");
+
                 //Contatore dei pazienti visitati
                 if(tmp.getColore()==3){
-                    int rossi=Integer.parseInt(lblCapienzaSala.getText());
-                    lblCapienzaSala.setText(Integer.toString(rossi-1));
+                    int rossi=stanza.
+                            ;
+                    lblContaRossi.setText(Integer.toString(rossi-1));
                 }else{
-                    int plebei=Integer.parseInt(lblNumeroInAttesa.getText());
-                    lblNumeroInAttesa.setText(Integer.toString(plebei-1));
+                    int plebei=Integer.parseInt(lblPazientiNonRossi.getText());
+                    lblPazientiNonRossi.setText(Integer.toString(plebei-1));
+
                 }
                 //controlllo se le code sono vuote
                 isEmpty();
@@ -150,12 +163,10 @@ public class Finestra extends JFrame {
         }
     }
 
-    private void controlloErroriForm() {
-        //controllo l'estetica
-        lblUltimoInserito.setText("");
-        if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
-            txtAreaInseriti.setText("");
-        }
+    private void inserimentiForm() {
+
+        controllaEstetica_Pulizia();
+
 
         //if di controllo, vedo se l'utente immette info sensate e complete
         //eccezioni gestite
@@ -178,10 +189,10 @@ public class Finestra extends JFrame {
                             //Contatore pazienti visitati rossi e normali
                             if(codicePaz==3){
                                 pazRossi=pazRossi+1;
-                                lblCapienzaSala.setText(Integer.toString(pazRossi));
+                                lblContaRossi.setText(Integer.toString(pazRossi));
                             }else{
                                 pazPlebei=pazPlebei+1;
-                                lblNumeroInAttesa.setText(Integer.toString(pazPlebei));
+                                lblPazientiNonRossi.setText(Integer.toString(pazPlebei));
                             }
 
                             int età = Integer.parseInt(inputEta.getText());
@@ -217,8 +228,16 @@ public class Finestra extends JFrame {
         }
     }
 
+    private void controllaEstetica_Pulizia() {
+        //controllo l'estetica
+        lblUltimoInserito.setText("");
+        if (txtAreaInseriti.getText().equals("Ancora nulla qui...")) {
+            txtAreaInseriti.setText("");
+        }
+    }
+
     private void isEmpty() {
-        if(stanza.codeEmpty()==false){
+        if(stanza.isAllCodeEmpty()==false){
             btnEsciPezzente.setEnabled(true);
         }else{
             btnEsciPezzente.setEnabled(false);

@@ -17,6 +17,8 @@ public class WaitingRoom {
     //dati della stanza
     int numPazientiCorrente=0;
     int numeroPazientiVisitati=0;
+    int numeroPazientiRossi;
+    int numeroPazientiTotali;
 
     public WaitingRoom() {
 //        //code inizializzate
@@ -84,17 +86,29 @@ public class WaitingRoom {
         uno=new RandomString(2).nextString();
         due=""+uno;
 
-        due.toUpperCase();
+        due.toUpperCase();//probabilmente da cancellare o da fare meglio
         return due=due+"-"+numeroPazientiVisitati;
     }
 
     //controllo se tutte le code sono vuote
-    public boolean codeEmpty(){
-        if(codBianco.isEmpty()==true && codVerde.isEmpty()==true && codGiallo.isEmpty()==true && codRosso.isEmpty()==true){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public boolean isAllCodeEmpty(){
+        return codBianco.isEmpty() && codVerde.isEmpty() && codGiallo.isEmpty() && codRosso.isEmpty();
+        //semplificato questo if dato che ho solo 2 possibilità
+    }
+
+    public int getNumeroPazientiRossi() {
+        return codRosso.;//TODO prendi dimensione dalla coda
+    }
+
+    public void setNumeroPazientiRossi(int numeroPazientiRossi) {
+        this.numeroPazientiRossi = numeroPazientiRossi;
+    }
+
+    public int getNumeroPazientiTotali() {
+        return numeroPazientiTotali;//TODO prendi dimensione dalla coda
+    }
+
+    public void setNumeroPazientiTotali(int numeroPazientiTotali) {
+        this.numeroPazientiTotali = numeroPazientiTotali;
     }
 }
