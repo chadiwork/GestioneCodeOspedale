@@ -145,7 +145,7 @@ public class Finestra extends JFrame {
 
                 aggiornaLabelContatori();
                 //controlllo se le code sono vuote
-                isEmpty();
+                attivazioneBottoneEstrai();
 
             }
 
@@ -153,7 +153,6 @@ public class Finestra extends JFrame {
             e1.printStackTrace();
         }
     }
-    //TODO CODA DA CONTROLLARE
 
     private void aggiornaLabelContatori() {
 
@@ -185,24 +184,16 @@ public class Finestra extends JFrame {
                     if (!inputEta.getText().equals("")) {
                         if (inputEta.getText().matches("^[-+]?\\d+(\\.\\d+)?$")) {
 
-                            //Contatore pazienti visitati rossi e normali
-                            if(codicePaz==3){
-                                pazRossi=pazRossi+1;
-                                lblContaRossi.setText(Integer.toString(pazRossi));
-                            }else{
-                                pazPlebei=pazPlebei+1;
-                                lblPazientiNonRossi.setText(Integer.toString(pazPlebei));
-                            }
-
                             int età = Integer.parseInt(inputEta.getText());
                             //qui ho tutti i dati del form
-
                             stanza.addPaziente(nome,cognome, codicePaz, età);
                             //qui ho aggiunto il paziente
-                            txtAreaInseriti.append(nome +" "+cognome+ " aggiunto, codice paziente: " + tabellaCodici[codicePaz] + "\n");
+                            txtAreaInseriti.append(nome +" "+cognome+ " aggiunto,CODICE PAZIENTE: " + tabellaCodici[codicePaz] +" |TICKET:"+stanza.getRandTicket()+ "\n");
                             System.out.println("FUNZIONA");
-
-                            isEmpty();
+                            attivazioneBottoneEstrai();
+                            aggiornaLabelContatori();
+                            svuotaCampiInserimento();
+                            //teniamolo commentato e lo attiviamo solo a programma finito, così ci semplifichiamo la vita per le prove
 
                         } else {
                             lblUltimoInserito.setText("Inserire SOLO numeri nel campo età");
@@ -227,6 +218,10 @@ public class Finestra extends JFrame {
         }
     }
 
+    private void svuotaCampiInserimento() {
+        //TODO FARE A PROGETTO FINITO
+    }
+
     private void controllaEstetica_Pulizia() {
         //controllo l'estetica
         lblUltimoInserito.setText("");
@@ -235,7 +230,7 @@ public class Finestra extends JFrame {
         }
     }
 
-    private void isEmpty() {
+    private void attivazioneBottoneEstrai() {
         if(stanza.isAllCodeEmpty()==false){
             btnEsciPezzente.setEnabled(true);
         }else{

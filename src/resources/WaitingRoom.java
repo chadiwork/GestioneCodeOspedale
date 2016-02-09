@@ -21,7 +21,7 @@ public class WaitingRoom {
     int numeroPazientiTotali;
 
     public WaitingRoom() {
-//        //code inizializzate
+//        //code inizializzate - potenzialmente inutile
 //        codRosso =new Coda();
 //        codGiallo=new Coda();
 //        codVerde=new Coda();
@@ -97,18 +97,14 @@ public class WaitingRoom {
     }
 
     public int getNumeroPazientiRossi() {
-        return codRosso.getDimension();//TODO controlla se funge bene
+        return codRosso.getDimension();
     }
-
-
     public int getNumeroPazientiTotali() {
         return codRosso.getDimension()+codVerde.getDimension()
                 +codGiallo.getDimension()+codBianco.getDimension();
-        //TODO controlla se funge bene
     }
     public int getNumeroPazientiNonRossi() {
         return codVerde.getDimension()+codGiallo.getDimension()+codBianco.getDimension();
-        //TODO controlla se funge bene
     }
 
 }
