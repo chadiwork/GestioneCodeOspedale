@@ -79,13 +79,12 @@ public class WaitingRoom {
             return null;
         }
     }
-
+    //TODO DA CONTROLLARE
     public String getRandTicket() {
         //restituisce una stringa con un codice unico che sembra quello delle macchine per numeri
         String uno,due;
         uno=new RandomString(2).nextString();
         due=""+uno;
-
         due.toUpperCase();//probabilmente da cancellare o da fare meglio
         return due=due+"-"+numeroPazientiVisitati;
     }

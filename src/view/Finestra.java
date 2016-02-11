@@ -1,10 +1,12 @@
 package view;
 
+import resources.DatiPersonaCasuale;
 import resources.Paziente;
 import resources.WaitingRoom;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 
@@ -71,7 +73,6 @@ public class Finestra extends JFrame {
         //array per ora non necesario per le core funcion del programma, solo per impostare l'inserimento della roba nella tendina
 
         tabellaCodici =new String[5];
-
         tabellaCodici[0]="Bianco";
         tabellaCodici[1]="Verde";
         tabellaCodici[2]="Giallo";
@@ -91,14 +92,17 @@ public class Finestra extends JFrame {
 
         //Bottoni genera pazienti casuali
         btnPazienteCasuale.addActionListener(e -> {
-            generaPazientiCasuali();
+            try {
+                generaPazientiCasuali();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
         });
 
         //Bottoni esci i pazienti
         btnEsciPezzente.addActionListener(e -> {
             estraiPazienti();
         });
-
     }
 
     private void riempiTendina() {
@@ -109,10 +113,25 @@ public class Finestra extends JFrame {
     }
 
     //metodi estesi
-    private void generaPazientiCasuali() {
-        //nome da fare meglio
-        inputNome.setText("Paolo");
-        inputCognome.setText("Moretto");
+    private void generaPazientiCasuali() throws FileNotFoundException {
+        /*intputNome.setText("Paolo");
+        inputCognome.setText("Moretto");*/
+
+        //Creo nomi casuali
+        DatiPersonaCasuale in=new DatiPersonaCasuale();
+        in.leggiNomi();
+        String nomi[];
+        nomi=in.getNome();
+        int n1=in.indiceCasuale(0,8912); //Indice per selezione un elemento dell'array casuale
+        inputNome.setText(nomi[n1]);
+
+        //Creo cognomi casuali
+        in.leggiCognomi();
+        String cognomi[];
+        cognomi=in.getCognome();
+        int n2=in.indiceCasuale(0,149); //Indice per selezione un elemento dell'array casuale
+        inputCognome.setText(cognomi[n2]);
+
         //creo età random
         Random r = new Random();
         int Low = 3;

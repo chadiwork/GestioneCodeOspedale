@@ -41,7 +41,6 @@ public class Coda <T> {
             //decremento la dimensione della coda dato che non ho il lenght
             this.dimension--;
         }
-        //TODO controlla se questo if funziona bene
         else if (this.isEmpty()) {
             this.dimension=0;
             throw new Exception("Impossibile effettuare deQueue perchè la coda è vuota");
