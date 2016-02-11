@@ -18,6 +18,7 @@ public class DatiPersonaCasuale {
     Scanner lettoreFileCognomi;
 
     public DatiPersonaCasuale() throws FileNotFoundException{
+        //TODO Controllare le refernces
         fileNomi=new File("C:\\Users\\Chado\\Desktop\\GestioneCodeOspedale\\src\\file\\Nomi.txt");
         fileCognomi=new File("C:\\Users\\Chado\\Desktop\\GestioneCodeOspedale\\src\\file\\Cognomi.txt");
         lettoreFileNomi=new Scanner(fileNomi);
