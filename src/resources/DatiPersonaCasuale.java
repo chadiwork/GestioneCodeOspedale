@@ -18,8 +18,8 @@ public class DatiPersonaCasuale {
     Scanner lettoreFileCognomi;
 
     public DatiPersonaCasuale() throws FileNotFoundException{
-        fileNomi=new File("Nomi.txt");
-        fileCognomi=new File("Cognomi.txt");
+        fileNomi=new File("C:\\Users\\Chado\\Desktop\\GestioneCodeOspedale\\src\\file\\Nomi.txt");
+        fileCognomi=new File("C:\\Users\\Chado\\Desktop\\GestioneCodeOspedale\\src\\file\\Cognomi.txt");
         lettoreFileNomi=new Scanner(fileNomi);
         lettoreFileCognomi=new Scanner(fileCognomi);
         nome=new String[8913];

@@ -1,9 +1,7 @@
 package view;
-
 import resources.DatiPersonaCasuale;
 import resources.Paziente;
 import resources.WaitingRoom;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
